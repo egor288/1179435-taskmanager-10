@@ -1,4 +1,4 @@
-import {Colors} from "../const.js";
+import {COLORS} from "../const.js";
 
 const DescriptionItems = [
   `Изучить теорию`,
@@ -30,7 +30,8 @@ const getRandomIntegerNumber = (min, max) => {
 
 const getRandomDate = () => {
   const targetDate = new Date();
-  const diffValue = getRandomIntegerNumber(-7, 7);
+  const sign = Math.random() > 0.5 ? 1 : -1;
+  const diffValue = sign * getRandomIntegerNumber(0, 7);
 
   targetDate.setDate(targetDate.getDate() + diffValue);
 
@@ -55,7 +56,7 @@ const generateTask = () => {
     dueDate,
     repeatingDays: dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
     tags: new Set(generateTags(Tags)),
-    color: getRandomArrayItem(Colors),
+    color: getRandomArrayItem(COLORS),
     isFavorite: Math.random() > 0.5,
     isArchive: Math.random() > 0.5
   };
